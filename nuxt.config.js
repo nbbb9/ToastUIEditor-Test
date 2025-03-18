@@ -1,7 +1,7 @@
 export default {
   ssr: true, // SSR 활성화 (SPA로 하려면 false)
   head: {
-    title: "My Nuxt 2 App",
+    title: "abcd",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
