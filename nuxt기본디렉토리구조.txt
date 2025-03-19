@@ -1,0 +1,9 @@
+nuxt-app/
+│── assets/         # 정적 파일 (CSS, 이미지 등)
+│── components/     # Vue 컴포넌트
+│── layouts/        # 레이아웃 (공통 템플릿)
+│── pages/          # 페이지 컴포넌트 (자동 라우팅)
+│── plugins/        # 플러그인 (전역 라이브러리 등록)
+│── static/         # 정적 파일 (변경 없이 제공되는 파일)
+│── store/          # Vuex 상태 관리
+│── nuxt.config.js  # Nuxt 설정 파일

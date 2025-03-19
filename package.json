@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "abcd",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,7 +8,9 @@
     "start": "nuxt start"
   },
   "dependencies": {
-    "@toast-ui/vue-editor": "^2.0.0",
+    "@toast-ui/editor": "^3.2.2",
+    "@toast-ui/vue-editor": "^3.2.3",
+    "codemirror": "^5.58.3",
     "highlight.js": "^11.11.1",
     "nuxt": "^2.18.1",
     "vue": "^2.7.16",
