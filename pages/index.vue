@@ -1,48 +1,64 @@
 <template>
     <div>
-        <h1>마크다운 입력 테스트</h1>
-        <nuxt-link to="/about">About 페이지로 이동</nuxt-link>
-        <p />
-        <input v-model="inputValue" />
-        <p>입력한 내용 : {{ inputValue }}</p>
-        <button v-on:click="increase">+</button>
-        <p>숫자 : {{ count }}</p>
+        <div class="font-bold text-2xl text-center text-blue-700">
+            마크다운 입력 테스트
+        </div>
+        <p></p>
+        <nuxt-link 
+            to="/about"
+            class="font-bold text-base text-blue-800 underline"
+        >
+            About 페이지로 이동
+        </nuxt-link>
+        <p></p>
+        <div class="flex gap-3">
+            <input 
+                v-model="inputValue"
+                class="bg-gray-300 border-2 border-black"
+            />
+            <div
+                class="bg-gray-300 w-96 border-2 border-black"
+            >
+                입력한 내용 : {{ inputValue }}
+            </div>
+        </div>
+        <p></p>
+        <div class="flex gap-3">
+            <button
+                v-on:click="increase"
+                class="border-black border-2 bg-yellow-500 text-xl w-7"
+            >
+                +
+            </button>
+            <div class="font-bold text-xl">
+                숫자 : {{ count }}
+            </div>
+        </div>
         <div id="app">
             <p>{{ message }}</p>
         </div>
         <ul>
             <li v-for="(item, index) in items" :key="index">{{ item }}</li>
         </ul>
-            <!-- <toast-editor
-                ref="editor"
-                :initial-value="content"
-                :initial-edit-type="'markdown'"
-                :preview-style="'vertical'"
-                :height="'700px'"
-                @input="onEditorChange"
-            /> -->
         <Editor 
             ref="toastuiEditor" 
             :initial-value="content"
             :height="'500px'" 
             @change="onEditorChange" 
         />
-        <!-- <client-only>
-            <Editor
-                ref="toastuiEditor"
-                :initial-value="content"
-                :initial-edit-type="'markdown'"
-                :preview-style="'vertical'"
-                :height="'500px'"
-                @input="onEditorChange"
-            />
-        </client-only> -->
-        <button @click="getMarkdown">Get Markdown</button>
-        <p/> 
-        <div>
+        <div class="place-content-center">
+            <button
+                class="bg-red-500 center"
+                @click="getMarkdown"
+            >
+                작성내용 확인하기
+            </button>
+        </div>
+        <!-- <div>
             {{ contentMARKDOWN }}
         </div>
-        <Viewer v-if="content != null" :initialValue="content" />
+        <p></p> -->
+        <!-- <Viewer v-if="contentMARKDOWN" :initialValue="content" /> -->
     </div>
 </template>
 
@@ -56,7 +72,7 @@ export default {
         return {
             content: "## 내용을 입력하세요...",
             message: "message",
-            inputValue: "기본값",
+            inputValue: "내용을 입력하세요",
             count: 0,
             items: ["Apple", "Banana", "Cherry"],
             contentHTML: "",
@@ -68,11 +84,6 @@ export default {
         Viewer
     },
     methods: {
-        // createAction() {
-        //     // content를 저장하는 액션 처리
-        //     var content = this.$refs.toastuiEditor.invoke("getMarkdown");
-        //     console.log("입력값 : ", content);
-        // },
         getHtml() {
             let html = this.$refs.toastuiEditor.invoke("getHTML");
             this.contentHTML = html;
@@ -81,7 +92,8 @@ export default {
         getMarkdown() {
             let markdown = this.$refs.toastuiEditor.invoke("getMarkdown");
             this.contentMARKDOWN = markdown;
-            console.log(markdown);
+            console.log(this.contentMARKDOWN);
+            alert("입력한 내용 : " + this.contentMARKDOWN);
         },
         increase() {
             this.count++;
@@ -92,7 +104,7 @@ export default {
     },
     watch: {
         content(newValue) {
-            console.log("🎯 content 변경됨:", newValue);
+            console.log("content 변경됨:", newValue);
         },
         inputValue(newValue) {
             console.log("inputValue 변경됨:", newValue);
@@ -102,16 +114,6 @@ export default {
         }
     },
     mounted() {
-        // this.$nextTick(() => {
-        //     setTimeout(() => {
-        //         console.log("🛠 this.$refs.editor:", this.$refs.editor);
-        //         if (this.$refs.editor?.editorInst) {
-        //             console.log("✅ Editor가 정상적으로 로드됨", this.$refs.editor.editorInst);
-        //         } else {
-        //         console.error("❌ EditorInst가 아직 생성되지 않음");
-        //         }
-        //     }, 1000); // 1초 대기 후 editorInst 확인
-        // });
     }
 };
 </script>
